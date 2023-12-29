@@ -4,13 +4,11 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.BottomSheetScaffold
-import androidx.compose.material3.*
-import androidx.compose.material3.Divider
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.Text
-import androidx.compose.material3.rememberBottomSheetScaffoldState
+import androidx.compose.material.BottomSheetScaffold
+import androidx.compose.material.*
+import androidx.compose.material.Divider
+import androidx.compose.material.Icon
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
@@ -30,7 +28,7 @@ import com.eominik.habit.data.HabitRepositoryImpl
 import com.eominik.habit.R
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun HabitScreen(
     modifier: Modifier = Modifier,
@@ -41,21 +39,16 @@ fun HabitScreen(
     ),
 ) {
 
-    val sheetState = rememberModalBottomSheetState()
-//    val bottomSheetState = rememberSheetState()
-//    val bottomSheetState = rememberSheetState()
-    val scaffoldState =
-        rememberBottomSheetScaffoldState(bottomSheetState = sheetState)
+
     val scope = rememberCoroutineScope()
 
     BottomSheetScaffold(
          sheetPeekHeight = 0.dp,
-        scaffoldState = scaffoldState,
+  //      scaffoldState = scaffoldState,
         sheetContent = {
             AddHabitBottomSheet(viewModel, closeBottomSheetCallback = {
                 scope.launch {
-    // Here
-                    sheetState.expand()
+
                 }
             })
         }
@@ -88,13 +81,7 @@ fun HabitScreen(
                         .size(28.dp)
                         .clickable {
                             scope.launch {
-           // Here problems
-                                if (sheetState.isVisible) {
-                                    sheetState.expand()
-                                } else {
-                                    sheetState.hide()
-                                }
-                            }
+                          }
                         }
                 )
 
