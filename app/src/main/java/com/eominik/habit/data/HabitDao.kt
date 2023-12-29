@@ -4,16 +4,19 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.eominik.habit.model.Habit
+import com.eominik.habit.model.HabitEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface HabitDao {
 
     @Insert(onConflict =  OnConflictStrategy.IGNORE)
-    suspend fun insertHabit(habit: Habit)
+    suspend fun insertHabit(habitEntity: HabitEntity)
 
-    @Query("SELECT * FROM habit ORDER BY id ASC")
-    fun getAllData(): Flow<List<Habit>>
+    @Query("SELECT * FROM HabitEntity ORDER BY id ASC")
+    fun getAllHabits(): List<HabitEntity>
+
+    @Query("DELETE FROM HabitEntity WHERE id=:id")
+    suspend fun deleteHabit(id: Long)
 
 }

@@ -4,15 +4,17 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.eominik.habit.model.Habit
+import androidx.room.TypeConverters
+import com.eominik.habit.model.HabitEntity
 
 @Database(
     entities = [
-        Habit::class
+        HabitEntity::class
     ],
     version = 1,
     exportSchema = false
 )
+@TypeConverters(TypeConverter::class)
 abstract class HabitDatabase : RoomDatabase() {
 
     abstract fun habitDao(): HabitDao

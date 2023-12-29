@@ -1,13 +1,13 @@
 package com.eominik.habit.model
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import com.eominik.habit.model.EntityConstant.NEXT_RESET_DATE_HABIT
+import java.util.Date
 
-@Entity
 data class Habit(
-
-    @PrimaryKey(autoGenerate = true)
-    val id: Int,
+    val id: Long,
     val habitName: String,
-    val targetWeekCheckCount: Int
+    val targetWeekCheckCount: Int,
+    val type: String,
+    val isCompleted: Boolean,
+    val nextResetDate: Date = NEXT_RESET_DATE_HABIT,
 )
