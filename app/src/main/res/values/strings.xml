@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">habit</string>
+    <string name="habits">Habits</string>
+
+    <string name="add_new_habit">Add new habit</string>
+    <string name="new_habit">New habit</string>
+    <string name="habit_name">Habit name</string>
+    <string name="add">Add</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete_habit">Delete habit</string>
+    <string name="update_habit">Update habit</string>
+    <string name="edit_habit">Edit habit</string>
+    <string name="checked_icon_description">Checked icon description</string>
+    <string name="no_habits">No habits</string>
+    <string name="error_habits">Error habits</string>
+
 </resources>

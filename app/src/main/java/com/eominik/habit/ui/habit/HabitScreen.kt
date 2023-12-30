@@ -10,11 +10,13 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.eominik.habit.data.HabitRepositoryImpl
 import com.eominik.habit.R
+import com.eominik.habit.ui.habit.add_habit.navigateToAddHabit
 import kotlinx.coroutines.launch
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
@@ -26,7 +28,12 @@ fun HabitScreen(
     val habitsUIState by viewModel.habitsUIState.collectAsState()
 
     Scaffold(
-
+topBar ={
+HabitsToolbar(
+    title= stringResource(id = R.string.habits),
+    onAddHabitClickedIcon = navController::navigateToAddHabit
+)
+}
     ) {
 
     }
