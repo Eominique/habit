@@ -1,22 +1,23 @@
 package com.eominik.habit.ui.habit
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.eominik.habit.data.HabitRepositoryImpl
 import com.eominik.habit.model.HabitEntity
-import kotlinx.coroutines.Dispatchers
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class HabitViewModel(
-    private val habitRepositoryImpl: HabitRepositoryImpl,
-    application: Application
-) : AndroidViewModel(application) {
+@HiltViewModel
+class HabitViewModel  @Inject constructor(
+    private val habitRepositoryImpl: HabitRepositoryImpl
 
-    private val _habitsData = MutableLiveData<List<HabitEntity>>()
-    val habitsData: LiveData<List<HabitEntity>> = _habitsData
+) : ViewModel() {
+
+    private val _habitsUIState = MutableStateFlow(HabitsUIState())
+    val habitsUIState: StateFlow<HabitsUIState> get() = _habitsUIState
 
     init {
         loadData()

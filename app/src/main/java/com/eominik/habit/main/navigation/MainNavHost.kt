@@ -1,4 +1,4 @@
-package com.eominik.habit
+package com.eominik.habit.main.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
